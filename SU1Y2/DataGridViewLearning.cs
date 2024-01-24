@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -63,8 +64,12 @@ namespace SU1Y2
             if (e.RowIndex >= 0)
             {
                 selectedRow = e.RowIndex;
-                txtID.Text = DataGV1.Rows[selectedRow].Cells[0].Value.ToString();
-                txtName.Text = DataGV1.Rows[selectedRow].Cells[1].Value.ToString();
+                DataGridViewRow row = DataGV1.Rows[selectedRow];
+                txtID.Text = row.Cells[0].Value.ToString();
+                txtName.Text = row.Cells[1].Value.ToString();
+                Image img = (Image)row.Cells[2].Value;
+                pic1.Image = img;
+                btnEdit.Text = "Update";
             }
         }
 
@@ -80,6 +85,24 @@ namespace SU1Y2
         {
             DataGV1.ClearSelection();
             selectedRow = -1;
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+           if(selectedRow != -1)
+           {
+                if (btnEdit.Text.Equals("Update"))
+                {
+                    DataGridViewRow row = DataGV1.Rows[selectedRow];
+                    row.Cells[0].Value = txtID.Text;
+                    row.Cells[1].Value = txtName.Text;
+                    row.Cells[2].Value = pic1.Image;
+                    btnEdit.Text = "Edit";
+                    DataGV1.ClearSelection();
+                    txtID.Text = null;
+                    txtName.Text = null;
+                }
+           }
         }
     }
 }
