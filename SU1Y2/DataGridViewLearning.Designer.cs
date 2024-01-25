@@ -184,6 +184,7 @@
             this.Name = "DataGridViewLearning";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DataGridViewLearning";
+            this.Load += new System.EventHandler(this.DataGridViewLearning_Load);
             this.Click += new System.EventHandler(this.DataGridViewLearning_Click);
             ((System.ComponentModel.ISupportInitialize)(this.pic1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataGV1)).EndInit();

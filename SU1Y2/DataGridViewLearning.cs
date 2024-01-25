@@ -104,5 +104,10 @@ namespace SU1Y2
                 }
            }
         }
+
+        private void DataGridViewLearning_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
